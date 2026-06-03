@@ -1,0 +1,117 @@
+{
+  "type": "bundle",
+  "id": "bundle--f3a1c2d4-9e87-4b21-bc34-112233445566",
+  "spec_version": "2.1",
+  "objects": [
+
+    {
+      "type": "identity",
+      "id": "identity--maryam-fatima",
+      "created": "2025-09-12T09:08:00.000Z",
+      "modified": "2025-09-12T09:08:00.000Z",
+      "name": "Maryam Fatima",
+      "identity_class": "individual",
+      "description": "Cyber Threat Intelligence Analyst. Views expressed are my own.",
+      "contact_information": "github.com/maryamfatima16"
+    },
+
+    {
+      "type": "threat-actor",
+      "id": "threat-actor--storm1865",
+      "created": "2025-09-12T09:21:00.000Z",
+      "modified": "2025-09-12T09:21:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "name": "Storm-1865",
+      "description": "Financially motivated threat actor. Known for ClickFix social engineering campaigns targeting hospitality platforms. Tracked by Microsoft.",
+      "threat_actor_types": ["criminal"],
+      "primary_motivation": "financial-gain"
+    },
+
+    {
+      "type": "campaign",
+      "id": "campaign--clickfix-hosp-2025",
+      "created": "2025-09-12T09:34:00.000Z",
+      "modified": "2025-09-13T16:47:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "name": "ClickFix Hospitality Phishing 2025",
+      "description": "Phishing campaign targeting hospitality sector staff and guests. Fake CAPTCHA pages trick users into running PowerShell commands themselves. Spoofs Booking.com using Punycode lookalike domains. Drops Lumma Stealer to steal credentials and session cookies.",
+      "first_seen": "2025-03-15T00:00:00.000Z",
+      "last_seen": "2025-08-28T00:00:00.000Z"
+    },
+
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--t1566-003",
+      "created": "2025-09-12T10:02:00.000Z",
+      "modified": "2025-09-12T10:02:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "name": "Phishing via spoofed booking platform (T1566.003)",
+      "description": "Emails impersonating Booking.com send victims to fake login pages. Punycode domains make the URL look legit at a glance.",
+      "external_references": [
+        { "source_name": "mitre-attack", "external_id": "T1566.003" }
+      ]
+    },
+
+    {
+      "type": "attack-pattern",
+      "id": "attack-pattern--t1059-001",
+      "created": "2025-09-12T10:11:00.000Z",
+      "modified": "2025-09-12T10:11:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "name": "User-executed PowerShell via ClickFix (T1059.001)",
+      "description": "Victim pastes a PowerShell command from the lure page into their Run dialog. Because the user executes it themselves, most email gateway and sandbox controls miss it.",
+      "external_references": [
+        { "source_name": "mitre-attack", "external_id": "T1059.001" }
+      ]
+    },
+
+    {
+      "type": "malware",
+      "id": "malware--lumma-stealer",
+      "created": "2025-09-12T11:28:00.000Z",
+      "modified": "2025-09-12T11:28:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "name": "Lumma Stealer",
+      "description": "Infostealer sold as MaaS. Steals browser credentials, session cookies, and PII. Final stage payload in this campaign.",
+      "malware_types": ["infostealer"],
+      "is_family": true
+    },
+
+    {
+      "type": "indicator",
+      "id": "indicator--punycode-domains",
+      "created": "2025-09-13T14:52:00.000Z",
+      "modified": "2025-09-13T16:47:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "name": "Punycode lookalike domains",
+      "description": "xn-- prefixed domains visually impersonating Booking.com. Easy to miss in a browser URL bar.",
+      "indicator_types": ["malicious-activity"],
+      "pattern": "[domain-name:value MATCHES '^xn--.*booking']",
+      "pattern_type": "stix",
+      "valid_from": "2025-03-15T00:00:00.000Z"
+    },
+
+    {
+      "type": "relationship",
+      "id": "relationship--001",
+      "created": "2025-09-13T17:05:00.000Z",
+      "modified": "2025-09-13T17:05:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "relationship_type": "attributed-to",
+      "source_ref": "campaign--clickfix-hosp-2025",
+      "target_ref": "threat-actor--storm1865"
+    },
+
+    {
+      "type": "relationship",
+      "id": "relationship--002",
+      "created": "2025-09-13T17:07:00.000Z",
+      "modified": "2025-09-13T17:07:00.000Z",
+      "created_by_ref": "identity--maryam-fatima",
+      "relationship_type": "uses",
+      "source_ref": "campaign--clickfix-hosp-2025",
+      "target_ref": "malware--lumma-stealer"
+    }
+
+  ]
+}
