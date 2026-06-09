@@ -22,9 +22,9 @@ Public reference: Microsoft MSTIC blog on Storm-1865 (March 2025)
 
 ## 1. Summary
 
-Storm-1865 is an ongoing phishing operation targeting the hospitality sector by impersonating Booking.com. Lures are sent to hotel staff and the kit captures credentials, card data, and live 2FA session tokens via an AiTM proxy. I analysed 812 URLs across 770 domains. Seven of those URLs were caught with victim PII still sitting in their query strings, which means real guests were compromised.
+Storm-1865 is an ongoing phishing operation targeting the hospitality sector by impersonating Booking.com. Lures are sent to hotel staff and the kit captures credentials, card data. I analysed 812 URLs across 770 domains. Seven of those URLs were caught with victim PII still sitting in their query strings, which means real guests were compromised.
 
-The two things that stood out to me during the analysis: how heavily the operators rely on `booking.<filler>` subdomain tricks (almost 200 URLs use this pattern), and how clearly automated their kit deployment is — the URL paths and shared infrastructure point to a templated, scalable setup rather than hand-built pages.
+The two things that stood out to me during the analysis: how heavily the operators rely on `booking.<filler>` subdomain tricks (almost 200 URLs use this pattern), and how clearly automated their kit deployment is, the URL paths and shared infrastructure point to a templated, scalable setup rather than hand-built pages.
 
 ---
 
@@ -49,11 +49,11 @@ ATT&CK v14 (Enterprise).
 
 **Initial access.** Spearphishing email impersonating Booking.com. Common lure themes are reservation confirmation, payment verification, check-in alerts, and guest reviews. The targets are hotel staff because those accounts have access to booking systems and loyalty programs.
 
-**Execution.** Two variants. The standard one drops the victim straight onto a credential harvesting page. The ClickFix variant is more interesting — the page shows a fake browser verification prompt and walks the user through pressing Win+R and pasting a command, which fetches and runs a secondary payload.
+**Execution.** Two variants. The standard one drops the victim straight onto a credential harvesting page. The ClickFix variant is more interesting, the page shows a fake browser verification prompt and walks the user through pressing Win+R and pasting a command, which fetches and runs a secondary payload.
 
-**Defense evasion.** Kit JavaScript is obfuscated in multiple layers. Domain masquerading is the main evasion play — see Section 4 for the full breakdown.
+**Defense evasion.** Kit JavaScript is obfuscated in multiple layers. Domain masquerading is the main evasion play.
 
-**Credential access.** The fake page captures username, password, and card details. The Tycoon 2FA variant adds an AiTM proxy that sits between the victim and the real Booking.com authentication flow, capturing the session token after MFA approval. That defeats TOTP and push-based MFA cleanly.
+**Credential access.** The fake page captures username, password, and card details.
 
 **Exfiltration.** Stolen data goes to attacker infrastructure. Seven URLs in the dataset have PII (firstname, lastname, email, phone) still sitting in their query strings — strong evidence that real victims interacted with the pages.
 
