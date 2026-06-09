@@ -1,6 +1,6 @@
 # Storm-1865 — Hospitality Phishing Campaign Analysis
 
-A breakdown of a Booking.com impersonation campaign tracked by Microsoft as Storm-1865. The campaign uses ClickFix social engineering to steal hotel staff credentials and bypass MFA.
+A breakdown of a Booking.com impersonation campaign tracked by Microsoft as Storm-1865. The campaign uses ClickFix social engineering to steal hotel staff credentials.
 
 This is an independent analysis I put together based on publicly available reporting and OSINT research. Companion non-technical version is in this repo as well.
 
