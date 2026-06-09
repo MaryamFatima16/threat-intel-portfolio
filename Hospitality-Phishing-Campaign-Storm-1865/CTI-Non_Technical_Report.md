@@ -1,6 +1,7 @@
 # Storm-1865: Hospitality Phishing Campaign
 
 **Author:** Maryam Fatima A
+
 **Public reference:** Microsoft MSTIC blog on Storm-1865, March 2025
 
 Storm-1865 is a financially motivated threat actor cluster tracked by Microsoft. The campaign impersonates Booking.com to target the hospitality sector, using a social engineering technique called ClickFix to trick hotel staff into running malicious commands. Goal: credential theft and financial fraud.
@@ -44,9 +45,6 @@ The infrastructure looks automated. Path structures repeat heavily, randomised s
 
 Seven URLs were found with real victim names, emails and phone numbers sitting in the query strings. That is the strongest evidence in the dataset that real guests have already been compromised.
 
-## Why this matters for hospitality operators
-
-Loyalty credentials and staff accounts are both high-value targets, and the sector has been hit repeatedly. MGM and Caesars in September 2023, Marina Bay Sands in October 2023 with around 665,000 loyalty members affected. Storm-1865 fits the same target profile.
 
 ## Recommendations
 
