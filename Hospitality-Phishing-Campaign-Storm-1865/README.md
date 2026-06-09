@@ -5,8 +5,8 @@ social engineering campaigns against hospitality booking platforms in 2025.
 
 ## What's in here
 - `storm1865_stix.json` — STIX 2.1 bundle I structured from the investigation. Covers the threat actor, campaign, 2 TTPs, Lumma Stealer payload, one IOC pattern, and relationships.
-- `storm1865_TI_report.md` — Technical threat intelligence report 
-- `storm1865_TI_report.md` — Non-Technical threat intelligence report 
+- `CTI-Technical_Report.md` — Technical threat intelligence report 
+- `CTI-Non_Technical_Report.md` — Non-Technical threat intelligence report 
 ## How the campaign works
 
 Storm-1865 sends phishing emails impersonating Booking.com. The links go to fake login
